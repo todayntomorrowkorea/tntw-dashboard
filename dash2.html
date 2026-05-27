@@ -287,12 +287,12 @@
       "AK 백화점":["전체 합계","AK 백화점"]
     };
     const rows={
-      channelTable:[[["채널","당월","MoM","YoY","비중"],["B2B-오프라인(도매)", "696만원", "+111.5%", "+36.3%", "6.3%"],["B2B-오프라인(레스토랑)", "4,988만원", "+46.8%", "+34.6%", "45.1%"],["B2B-오프라인(호텔)", "402만원", "-34.2%", "-10.5%", "3.6%"],["B2B-온라인(직매입)", "2,720만원", "-11.7%", "+48.4%", "24.6%"],["B2C-오프라인(백화점)", "7만원", "+5.5%", "-78.1%", "0.1%"],["B2C-온라인(브랜드몰)", "902만원", "+6.5%", "-47.0%", "8.2%"],["B2C-온라인(자사몰)", "1,251만원", "-17.0%", "-20.9%", "11.3%"],["B2C-온라인(자사몰_특가)", "101만원", "-", "+2321.2%", "0.9%"]]],
-      deptTable:[[["백화점","지점","당월","MoM","YoY","비중"]]],
-      productTable:[[["제품","브랜드","카테고리","상태","매출액","수량","평균단가"]]],
-      brandTable:[[["브랜드","당월","MoM","증감","비중"],["RUSTICHELLA", "7,723만원", "6,852만원", "+871만원", "77.1%"],["TARTUFLANGHE", "1,479만원", "1,640만원", "-160만원", "14.8%"],["AUGUSTABLE", "595만원", "634만원", "-38만원", "5.9%"],["GONNELLI 1585", "198만원", "42만원", "+155만원", "2.0%"],["MAISON MARC", "16만원", "16만원", "-0만원", "0.2%"]]],
-      categoryTable:[[["카테고리","당월","MoM","증감","비중"],["파스타", "6,734만원", "5,656만원", "+1,078만원", "60.6%"],["오일", "1,343만원", "836만원", "+507만원", "12.1%"],["소스", "1,038만원", "1,060만원", "-21만원", "9.4%"],["선물세트", "804만원", "773만원", "+30만원", "7.2%"],["생 트러플", "482만원", "578만원", "-95만원", "4.3%"],["소금", "278만원", "191만원", "+87만원", "2.5%"],["스낵", "136만원", "147만원", "-10만원", "1.2%"],["트러플", "133만원", "198만원", "-64만원", "1.2%"],["잼", "79만원", "88만원", "-9만원", "0.7%"],["냉동 트러플", "35만원", "56만원", "-21만원", "0.3%"]]],
-      onlineTable:[[["거래처","제품","카테고리","매출액","수량","비중"]]]
+      channelTable:[["채널","당월","MoM","YoY","비중"],["B2B-오프라인(도매)", "696만원", "+111.5%", "+36.3%", "6.3%"],["B2B-오프라인(레스토랑)", "4,988만원", "+46.8%", "+34.6%", "45.1%"],["B2B-오프라인(호텔)", "402만원", "-34.2%", "-10.5%", "3.6%"],["B2B-온라인(직매입)", "2,720만원", "-11.7%", "+48.4%", "24.6%"],["B2C-오프라인(백화점)", "7만원", "+5.5%", "-78.1%", "0.1%"],["B2C-온라인(브랜드몰)", "902만원", "+6.5%", "-47.0%", "8.2%"],["B2C-온라인(자사몰)", "1,251만원", "-17.0%", "-20.9%", "11.3%"],["B2C-온라인(자사몰_특가)", "101만원", "-", "+2321.2%", "0.9%"]],
+      deptTable:[["백화점","지점","당월","MoM","YoY","비중"]],
+      productTable:[["제품","브랜드","카테고리","상태","매출액","수량","평균단가"]],
+      brandTable:[["브랜드","당월","MoM","증감","비중"],["RUSTICHELLA", "7,723만원", "6,852만원", "+871만원", "77.1%"],["TARTUFLANGHE", "1,479만원", "1,640만원", "-160만원", "14.8%"],["AUGUSTABLE", "595만원", "634만원", "-38만원", "5.9%"],["GONNELLI 1585", "198만원", "42만원", "+155만원", "2.0%"],["MAISON MARC", "16만원", "16만원", "-0만원", "0.2%"]],
+      categoryTable:[["카테고리","당월","MoM","증감","비중"],["파스타", "6,734만원", "5,656만원", "+1,078만원", "60.6%"],["오일", "1,343만원", "836만원", "+507만원", "12.1%"],["소스", "1,038만원", "1,060만원", "-21만원", "9.4%"],["선물세트", "804만원", "773만원", "+30만원", "7.2%"],["생 트러플", "482만원", "578만원", "-95만원", "4.3%"],["소금", "278만원", "191만원", "+87만원", "2.5%"],["스낵", "136만원", "147만원", "-10만원", "1.2%"],["트러플", "133만원", "198만원", "-64만원", "1.2%"],["잼", "79만원", "88만원", "-9만원", "0.7%"],["냉동 트러플", "35만원", "56만원", "-21만원", "0.3%"]],
+      onlineTable:[["거래처","제품","카테고리","매출액","수량","비중"]]
     };
     function setOptions(id, values){
       // cb-wrap 존재 여부로 분기
@@ -507,7 +507,7 @@
 
 
     // ===== 실제 원본 데이터 (이카운트 매출 CSV 기반) =====
-    // 업데이트: 2026-05-27 20:08
+    // 업데이트: 2026-05-27 20:49
     // 채널별 (거래처그룹1명 기준)
     const CH_NAMES=["B2B-오프라인(도매)", "B2B-오프라인(레스토랑)", "B2B-오프라인(호텔)", "B2B-온라인(직매입)", "B2C-오프라인(백화점)", "B2C-온라인(브랜드몰)", "B2C-온라인(자사몰)", "B2C-온라인(자사몰_특가)"];
     const CH_COLORS=["#64748b", "#16a34a", "#0891b2", "#d9902f", "#8b5cf6", "#3b82f6", "#e95d0f", "#db3f8e"];
@@ -619,134 +619,17 @@
       if(_chartInstances[id]){ _chartInstances[id].destroy(); delete _chartInstances[id]; }
     }
 
-    // 현재 월(1-based) — 올해 데이터가 없는 월은 흐리게 표시
+    function hexToRgba(hex, a){
+      const h=(hex||"#888888").replace("#","");
+      const r=parseInt(h.slice(0,2),16)||136, g=parseInt(h.slice(2,4),16)||136, b=parseInt(h.slice(4,6),16)||136;
+      return `rgba(${r},${g},${b},${a})`;
+    }
+
+    // 현재 월(1-based)
     const CUR_MONTH = new Date().getMonth() + 1;
 
     // 월간 누적 스택바 (2025 회색 + 2026 컬러) — 백만원
-    function buildMonthlyStackedChart(canvasId, names, colors, data26, data25, unitLabel){
-      destroyChart(canvasId);
-      const canvas = document.getElementById(canvasId);
-      if(!canvas) return;
-      const unit = unitLabel || "백만원";
-      const divisor = (unit === "만원") ? 1 : 100;
 
-      const labels = MONTH_LABELS;
-
-      // 2025 총합 (회색 단일 시리즈)
-      const total25 = labels.map((_,i) =>
-        names.reduce((s,n) => s + (data25[n]?data25[n][i]:0), 0) / divisor
-      );
-      // 2026 채널별 시리즈
-      const datasets26 = names.map((n,i) => ({
-        label: n,
-        data: (data26[n]||[]).map((v,mi) => mi < CUR_MONTH ? v/divisor : null),
-        backgroundColor: colors[i],
-        stack: "s26",
-        datalabels: { display: false }
-      }));
-      // 2026 총합 레이블용 투명 시리즈
-      const total26 = labels.map((_,i) =>
-        names.reduce((s,n) => s + (data26[n]?data26[n][i]:0), 0) / divisor
-      );
-
-      // 2025 단일 스택
-      const ds25 = {
-        label: "2025년",
-        data: total25,
-        backgroundColor: "#c8d2df",
-        stack: "s25",
-        datalabels: {
-          display: true,
-          anchor: "end", align: "top",
-          color: "#94a3b8", font: {size:10},
-          formatter: v => v > 0 ? Math.round(v) : ""
-        }
-      };
-
-      // 2026 총합 레이블: 마지막 채널 시리즈에 붙임
-      datasets26[datasets26.length-1].datalabels = {
-        display: (ctx) => {
-          const mi = ctx.dataIndex;
-          return mi < CUR_MONTH && total26[mi] > 0;
-        },
-        anchor: "end", align: "top",
-        color: "#344054", font: {size:10, weight:"bold"},
-        formatter: (_v, ctx) => {
-          const mi = ctx.dataIndex;
-          return Math.round(total26[mi]) || "";
-        }
-      };
-
-      _chartInstances[canvasId] = new Chart(canvas, {
-        type: "bar",
-        data: { labels, datasets: [ds25, ...datasets26] },
-        options: {
-          responsive: true, maintainAspectRatio: false,
-          plugins: {
-            legend: { display: false },
-            tooltip: {
-              callbacks: {
-                label: ctx => {
-                  const v = ctx.raw;
-                  if(v == null) return null;
-                  return ` ${ctx.dataset.label}: ${(v*divisor).toLocaleString()}만원`;
-                }
-              }
-            }
-          },
-          scales: {
-            x: { stacked: true, grid:{display:false} },
-            y: { stacked: true, ticks:{ callback: v => v + (unit==="만원"?"만":"M") } }
-          }
-        }
-      });
-    }
-
-    // 주간 누적 스택바 — 만원
-    function buildWeeklyStackedChart(canvasId, names, colors, data26, data25){
-      destroyChart(canvasId);
-      const canvas = document.getElementById(canvasId);
-      if(!canvas) return;
-      const nWeeks = (data26[names[0]]||[]).length || 22;
-      const labels = Array.from({length:nWeeks},(_,i)=>`W${i+1}`);
-      const total25 = labels.map((_,i) =>
-        names.reduce((s,n)=>s+(data25[n]?data25[n][i]:0),0)
-      );
-      const datasets26 = names.map((n,i)=>({
-        label: n,
-        data: data26[n]||[],
-        backgroundColor: colors[i],
-        stack: "s26",
-        datalabels:{display:false}
-      }));
-      const total26 = labels.map((_,i)=>
-        names.reduce((s,n)=>s+(data26[n]?data26[n][i]:0),0)
-      );
-      const ds25 = {
-        label:"2025년",
-        data:total25,
-        backgroundColor:"#c8d2df",
-        stack:"s25",
-        datalabels:{display:true,anchor:"end",align:"top",color:"#94a3b8",font:{size:9},
-          formatter:v=>v>0?Math.round(v):""}
-      };
-      datasets26[datasets26.length-1].datalabels = {
-        display: ctx => total26[ctx.dataIndex]>0,
-        anchor:"end",align:"top",color:"#344054",font:{size:9,weight:"bold"},
-        formatter:(_,ctx)=>Math.round(total26[ctx.dataIndex])||""
-      };
-      _chartInstances[canvasId] = new Chart(canvas,{
-        type:"bar",
-        data:{labels,datasets:[ds25,...datasets26]},
-        options:{
-          responsive:true,maintainAspectRatio:false,
-          plugins:{legend:{display:false},
-            tooltip:{callbacks:{label:ctx=>ctx.raw!=null?` ${ctx.dataset.label}: ${ctx.raw.toLocaleString()}만원`:null}}},
-          scales:{x:{stacked:true,grid:{display:false},ticks:{font:{size:9}}},
-                  y:{stacked:true,ticks:{callback:v=>v+"만"}}}
-        }
-      });
-    }
 
     // 범례 렌더
     function buildLegend(legendId, names, colors){
@@ -818,21 +701,26 @@
         };
       }
 
-      const ds25 = {
-        label:"2025년",
-        data: total25,
-        backgroundColor:"#c8d2df",
-        stack:"s25",
-        datalabels:{
-          display: true, anchor:"end", align:"top",
+      // 2025 채널별 시리즈 (동일 색상, 투명도 35%)
+      const datasets25 = names.map((n,i) => ({
+        label: n+"_25",
+        data: (data25[n]||[]).map(v => v/divisor),
+        backgroundColor: hexToRgba(colors[i], 0.35),
+        stack: "s25",
+        datalabels: { display: false }
+      }));
+      if(datasets25.length > 0){
+        datasets25[datasets25.length-1].datalabels = {
+          display: (ctx) => total25[ctx.dataIndex] > 0,
+          anchor:"end", align:"top",
           color:"#94a3b8", font:{size:10},
-          formatter: v => v > 0 ? Math.round(v) : ""
-        }
-      };
+          formatter: (_v, ctx) => Math.round(total25[ctx.dataIndex]) || ""
+        };
+      }
 
       _chartInstances[id] = new Chart(canvas, {
         type:"bar",
-        data:{ labels, datasets:[ds25, ...datasets26] },
+        data:{ labels, datasets:[...datasets25, ...datasets26] },
         options:{
           responsive:true, maintainAspectRatio:false,
           plugins:{
@@ -871,11 +759,22 @@
           formatter:(_,ctx)=>Math.round(total26[ctx.dataIndex])||""
         };
       }
-      const ds25={label:"2025년",data:total25,backgroundColor:"#c8d2df",stack:"s25",
-        datalabels:{display:true,anchor:"end",align:"top",color:"#94a3b8",font:{size:9},
-          formatter:v=>v>0?Math.round(v):""}};
+      const datasets25 = names.map((n,i)=>({
+        label:n+"_25",
+        data:data25[n]||[],
+        backgroundColor:hexToRgba(colors[i],0.35),
+        stack:"s25",
+        datalabels:{display:false}
+      }));
+      if(datasets25.length>0){
+        datasets25[datasets25.length-1].datalabels={
+          display: ctx=>total25[ctx.dataIndex]>0,
+          anchor:"end",align:"top",color:"#94a3b8",font:{size:9},
+          formatter:(_,ctx)=>Math.round(total25[ctx.dataIndex])||""
+        };
+      }
       _chartInstances[id]=new Chart(canvas,{
-        type:"bar",data:{labels,datasets:[ds25,...datasets26]},
+        type:"bar",data:{labels,datasets:[...datasets25,...datasets26]},
         options:{responsive:true,maintainAspectRatio:false,
           plugins:{legend:{display:false},
             tooltip:{callbacks:{label:ctx=>ctx.raw!=null?` ${ctx.dataset.label}: ${Math.round(ctx.raw).toLocaleString()}만원`:null}}},
