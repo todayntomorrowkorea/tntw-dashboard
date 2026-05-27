@@ -55,6 +55,22 @@
   </style>
 </head>
 <body>
+  <!-- 비밀번호 보호 화면 -->
+  <div id="pwScreen" style="display:flex;align-items:center;justify-content:center;height:100vh;background:#f0f4f8;position:fixed;top:0;left:0;width:100%;z-index:9999;">
+    <div style="background:#fff;border-radius:12px;padding:40px 48px;box-shadow:0 4px 24px rgba(0,0,0,0.10);text-align:center;min-width:320px;">
+      <div style="font-size:22px;font-weight:800;color:#1e293b;margin-bottom:6px;">TNTW Dashboard</div>
+      <div style="font-size:13px;color:#64748b;margin-bottom:28px;">대외비 — 비밀번호를 입력하세요</div>
+      <input id="pwInput" type="password" placeholder="비밀번호"
+        style="width:100%;padding:10px 14px;border:1.5px solid #cbd5e1;border-radius:8px;font-size:15px;outline:none;box-sizing:border-box;margin-bottom:12px;"
+        onkeydown="if(event.key==='Enter')checkPw()">
+      <div id="pwErr" style="color:#ef4444;font-size:12px;height:16px;margin-bottom:8px;"></div>
+      <button onclick="checkPw()"
+        style="width:100%;padding:11px;background:#2563eb;color:#fff;border:none;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;">
+        입장
+      </button>
+    </div>
+  </div>
+  <div id="mainApp" style="display:none;">
   <div class="app">
     <aside class="side">
       <div class="brand">
@@ -507,7 +523,7 @@
 
 
     // ===== 실제 원본 데이터 (이카운트 매출 CSV 기반) =====
-    // 업데이트: 2026-05-27 22:34
+    // 업데이트: 2026-05-27 22:41
     const OVERVIEW_KPI={"cur_label": "11,225만원", "cur_period": "2026-05-01~2026-05-27", "mom_pct": "+14.7%", "mom_sign": "up", "yoy_label": "9,845만원", "yoy_pct": "+14.0%", "yoy_period": "2025-05-01~2025-05-27"};
     // 채널별 (거래처그룹1명 기준)
     const CH_NAMES=["B2B-오프라인(도매)", "B2B-오프라인(레스토랑)", "B2B-오프라인(호텔)", "B2B-온라인(직매입)", "B2C-오프라인(백화점)", "B2C-온라인(브랜드몰)", "B2C-온라인(자사몰)", "B2C-온라인(자사몰_특가)"];
@@ -1344,6 +1360,33 @@
     setTimeout(fitMetricText,100);
     window.addEventListener("resize",fitMetricText);
     document.getElementById("fullscreenBtn").addEventListener("click",()=>{if(document.fullscreenElement)document.exitFullscreen();else document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen()});
+  </script>
+  </div><!-- /mainApp -->
+  <script>
+    (function(){
+      const PW = "young5566^^";
+      const KEY = "tntw_auth";
+      function checkPw(){
+        const val = document.getElementById("pwInput").value;
+        if(val === PW){
+          sessionStorage.setItem(KEY,"1");
+          document.getElementById("pwScreen").style.display="none";
+          document.getElementById("mainApp").style.display="block";
+        } else {
+          document.getElementById("pwErr").textContent="비밀번호가 올바르지 않습니다.";
+          document.getElementById("pwInput").value="";
+          document.getElementById("pwInput").focus();
+        }
+      }
+      window.checkPw = checkPw;
+      // 세션 유지 확인
+      if(sessionStorage.getItem(KEY)==="1"){
+        document.getElementById("pwScreen").style.display="none";
+        document.getElementById("mainApp").style.display="block";
+      } else {
+        setTimeout(()=>document.getElementById("pwInput").focus(), 100);
+      }
+    })();
   </script>
 </body>
 </html>
