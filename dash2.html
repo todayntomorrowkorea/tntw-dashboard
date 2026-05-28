@@ -531,8 +531,12 @@
 
 
     // ===== 실제 원본 데이터 (이카운트 매출 CSV 기반) =====
-    // 업데이트: 2026-05-28 22:18
+    // 업데이트: 2026-05-28 22:27
     const OVERVIEW_KPI={"cur_label": "11,556만원", "cur_period": "2026-05-01~2026-05-28", "mom_label": "11,278만원", "mom_period": "2026-04 전체", "mom_pct": "+2.5%", "mom_sign": "up", "yoy_label": "11,078만원", "yoy_period": "2025-05 전체", "yoy_pct": "+4.3%", "yoy_sign": "up", "date_progress": "28/31일 (90%)", "last_date": "2026-05-28 기준"};
+    const CHANNEL_KPI={"cur": "11,556만원", "mom": "11,278만원", "mom_pct": "+2.5%", "mom_sign": "up", "yoy": "11,078만원", "yoy_pct": "+4.3%", "yoy_sign": "up"};
+    const DEPT_KPI={"cur": "11만원", "mom": "76만원", "mom_pct": "-85.1%", "mom_sign": "down", "yoy": "124만원", "yoy_pct": "-90.9%", "yoy_sign": "down"};
+    const ONLINE_KPI={"cur": "2,285만원", "mom": "2,633만원", "mom_pct": "-13.2%", "mom_sign": "down", "yoy": "3,593만원", "yoy_pct": "-36.4%", "yoy_sign": "down"};
+    const PRODUCT_KPI={"cur": "11,556만원", "mom": "11,278만원", "mom_pct": "+2.5%", "mom_sign": "up", "yoy": "11,078만원", "yoy_pct": "+4.3%", "yoy_sign": "up"};
     // 채널별 (거래처그룹1명 기준)
     const CH_NAMES=["B2B-오프라인(도매)", "B2B-오프라인(레스토랑)", "B2B-오프라인(호텔)", "B2B-온라인(직매입)", "B2C-오프라인(백화점)", "B2C-온라인(브랜드몰)", "B2C-온라인(자사몰)", "B2C-온라인(자사몰_특가)"];
     const CH_COLORS=["#64748b", "#16a34a", "#0891b2", "#d9902f", "#8b5cf6", "#3b82f6", "#e95d0f", "#db3f8e"];
@@ -1344,7 +1348,23 @@
         }
       }
 
-      // ── 임박재고 KPI ──
+      // ── 탭별 KPI 카드 업데이트 ──
+      function applyTabKpi(kpi, prefix){
+        if(!kpi || !kpi.cur) return;
+        const set = (id,v) => { const el=document.getElementById(id); if(el) el.textContent=v; };
+        const setCls = (id,c) => { const el=document.getElementById(id); if(el) el.className="v "+c; };
+        set(prefix+"MetricCurrent", kpi.cur);
+        set(prefix+"MetricMom",     kpi.mom);
+        set(prefix+"MetricMomRate", kpi.mom_pct);
+        setCls(prefix+"MetricMomRate", kpi.mom_sign);
+        set(prefix+"MetricYoy",     kpi.yoy);
+        set(prefix+"MetricYoyRate", kpi.yoy_pct);
+        setCls(prefix+"MetricYoyRate", kpi.yoy_sign);
+      }
+      if(typeof CHANNEL_KPI!=="undefined") applyTabKpi(CHANNEL_KPI, "channel");
+      if(typeof DEPT_KPI!=="undefined")    applyTabKpi(DEPT_KPI,    "dept");
+      if(typeof ONLINE_KPI!=="undefined")  applyTabKpi(ONLINE_KPI,  "online");
+      if(typeof PRODUCT_KPI!=="undefined") applyTabKpi(PRODUCT_KPI, "product");
       if(typeof INV_EXP_1M!=="undefined"){
         const expAll = INV_EXP_ALL||[];
         // 만료포함 전체 임박 건수 (잔여일 기준 오름차순, 이미 정렬됨)
