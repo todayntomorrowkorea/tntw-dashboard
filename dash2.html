@@ -92,20 +92,20 @@
           <p id="pageSub">dash2_fix 방식의 매출 표시를 기준으로, 모든 매출 탭을 월간/주간/비중/상세 선택 구조로 봅니다.</p>
         </div>
         <div class="actions">
-          <span class="update-time">업데이트: 2026-05-23 13:40</span>
+          <span class="update-time" id="globalUpdateTime">업데이트: 2026-05-28</span>
+          <span style="display:inline-flex;align-items:center;gap:6px;margin:0 8px;">
+            <span style="font-size:11px;color:#64748b;" id="globalDateLabel">-</span>
+            <span style="display:inline-block;width:80px;height:7px;background:#e2e8f0;border-radius:4px;overflow:hidden;">
+              <span id="globalProgressFill" style="display:block;height:100%;background:#2563eb;border-radius:4px;width:0%;transition:width .4s;"></span>
+            </span>
+            <span id="globalProgressText" style="font-size:12px;font-weight:700;color:#2563eb;">-</span>
+          </span>
           <button class="btn" id="fullscreenBtn">전체화면</button>
           <button class="btn primary">업데이트</button>
         </div>
       </div>
 
       <section id="overview" class="view on">
-        <div style="display:flex;justify-content:flex-end;align-items:center;padding:4px 2px 8px;gap:8px;">
-          <span style="font-size:12px;color:#64748b;">월 진행률</span>
-          <span id="dateProgressBar" style="display:inline-block;width:120px;height:8px;background:#e2e8f0;border-radius:4px;overflow:hidden;">
-            <span id="dateProgressFill" style="display:block;height:100%;background:#2563eb;border-radius:4px;width:0%;transition:width .4s;"></span>
-          </span>
-          <span id="dateProgressText" style="font-size:12px;font-weight:700;color:#2563eb;">-</span>
-        </div>
         <div class="meta">
           <div class="metric"><div class="k">당월 매출 <span id="overviewMomBadge" class="down">-</span></div><div class="v" id="overviewCurVal">-</div><div class="s" id="overviewCurSub">집계중...</div></div>
           <div class="metric"><div class="k">전월 매출 <span id="overviewMomPctBadge" class="muted">-</span></div><div class="v" id="overviewMomVal">-</div><div class="s" id="overviewMomSub">-</div></div>
@@ -531,8 +531,8 @@
 
 
     // ===== 실제 원본 데이터 (이카운트 매출 CSV 기반) =====
-    // 업데이트: 2026-05-28 17:57
-    const OVERVIEW_KPI={"cur_label": "11,556만원", "cur_period": "2026-05-01~2026-05-28", "mom_label": "11,278만원", "mom_period": "2026-04 전체", "mom_pct": "+2.5%", "mom_sign": "up", "yoy_label": "11,078만원", "yoy_period": "2025-05 전체", "yoy_pct": "+4.3%", "yoy_sign": "up", "date_progress": "28/31일 (90%)"};
+    // 업데이트: 2026-05-28 18:04
+    const OVERVIEW_KPI={"cur_label": "11,556만원", "cur_period": "2026-05-01~2026-05-28", "mom_label": "11,278만원", "mom_period": "2026-04 전체", "mom_pct": "+2.5%", "mom_sign": "up", "yoy_label": "11,078만원", "yoy_period": "2025-05 전체", "yoy_pct": "+4.3%", "yoy_sign": "up", "date_progress": "28/31일 (90%)", "last_date": "2026-05-28 기준"};
     // 채널별 (거래처그룹1명 기준)
     const CH_NAMES=["B2B-오프라인(도매)", "B2B-오프라인(레스토랑)", "B2B-오프라인(호텔)", "B2B-온라인(직매입)", "B2C-오프라인(백화점)", "B2C-온라인(브랜드몰)", "B2C-온라인(자사몰)", "B2C-온라인(자사몰_특가)"];
     const CH_COLORS=["#64748b", "#16a34a", "#0891b2", "#d9902f", "#8b5cf6", "#3b82f6", "#e95d0f", "#db3f8e"];
@@ -1333,10 +1333,14 @@
 
         // Date Progress
         if(OVERVIEW_KPI.date_progress){
-          set("dateProgressText", OVERVIEW_KPI.date_progress);
+          const set = (id,v) => { const el=document.getElementById(id); if(el) el.textContent=v; };
+          set("dateProgressText",  OVERVIEW_KPI.date_progress);
+          set("globalProgressText", OVERVIEW_KPI.date_progress);
+          set("globalDateLabel",    OVERVIEW_KPI.last_date || "");
           const pct = parseInt(OVERVIEW_KPI.date_progress.match(/(\d+)%/)?.[1]||0);
-          const fill = document.getElementById("dateProgressFill");
-          if(fill) fill.style.width = pct + "%";
+          ["dateProgressFill","globalProgressFill"].forEach(id=>{
+            const el=document.getElementById(id); if(el) el.style.width=pct+"%";
+          });
         }
       }
 
