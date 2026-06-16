@@ -108,8 +108,8 @@
       <section id="overview" class="view on">
         <div class="meta">
           <div class="metric"><div class="k">당월 매출 <span id="overviewMomBadge" class="down">-</span></div><div class="v" id="overviewCurVal">-</div><div class="s" id="overviewCurSub">집계중...</div></div>
-          <div class="metric"><div class="k">전월 매출 <span id="overviewMomPctBadge" class="muted">-</span></div><div class="v" id="overviewMomVal">-</div><div class="s" id="overviewMomSub">-</div></div>
-          <div class="metric"><div class="k">전년 동월 매출 <span id="overviewYoyBadge" class="up">-</span></div><div class="v" id="overviewYoyVal">-</div><div class="s" id="overviewYoySub">-</div></div>
+          <div class="metric"><div class="k">전월 동기 <span id="overviewMomPctBadge" class="muted">-</span></div><div class="v" id="overviewMomVal">-</div><div class="s" id="overviewMomSub">-</div></div>
+          <div class="metric"><div class="k">전년 동기 <span id="overviewYoyBadge" class="up">-</span></div><div class="v" id="overviewYoyVal">-</div><div class="s" id="overviewYoySub">-</div></div>
           <div class="metric"><div class="k">임박재고 <span class="warn">전체 표시</span></div><div class="v" id="kpiExp1m">-</div><div class="s">소비기한 기준 임박 순</div></div>
           <div class="metric"><div class="k">부족재고 <span class="down">해외오더</span></div><div class="v" id="kpiDeficit">-</div><div class="s">DSI 3개월 미만 및 품절 포함</div></div>
         </div>
@@ -585,8 +585,8 @@
 
 
     // ===== 실제 원본 데이터 (이카운트 매출 CSV 기반) =====
-    // 업데이트: 2026-06-16 10:36
-    const OVERVIEW_KPI={"cur_label": "3,675만원", "cur_period": "2026-06-01~2026-06-16", "mom_label": "11,762만원", "mom_period": "2026-05 전체", "mom_pct": "-68.7%", "mom_sign": "down", "yoy_label": "10,134만원", "yoy_period": "2025-06 전체", "yoy_pct": "-63.7%", "yoy_sign": "down", "date_progress": "15/30일 (50%)", "last_date": "2026-06-15 기준"};
+    // 업데이트: 2026-06-16 10:48
+    const OVERVIEW_KPI={"cur_label": "3,675만원", "cur_period": "2026-06-01~2026-06-15", "mom_label": "6,874만원", "mom_period": "2026-05 동기(15일까지)", "mom_pct": "-46.5%", "mom_ratio": "53%", "mom_sign": "down", "yoy_label": "4,111만원", "yoy_period": "2025-06 동기(15일까지)", "yoy_pct": "-10.6%", "yoy_ratio": "89%", "yoy_sign": "down", "date_progress": "15/30일 (50%)", "last_date": "2026-06-15 기준"};
     const CHANNEL_KPI={"cur": "3,675만원", "mom": "11,762만원", "mom_pct": "-68.7%", "mom_sign": "down", "yoy": "10,134만원", "yoy_pct": "-63.7%", "yoy_sign": "down"};
     const DEPT_KPI={"cur": "648만원", "mom": "1,353만원", "mom_pct": "-52.1%", "mom_sign": "down", "yoy": "1,915만원", "yoy_pct": "-66.2%", "yoy_sign": "down"};
     const ONLINE_KPI={"cur": "693만원", "mom": "2,356만원", "mom_pct": "-70.6%", "mom_sign": "down", "yoy": "2,470만원", "yoy_pct": "-71.9%", "yoy_sign": "down"};
@@ -1502,19 +1502,19 @@
         // 당월
         set("overviewCurVal",   OVERVIEW_KPI.cur_label);
         set("overviewCurSub",   OVERVIEW_KPI.cur_period + " 공급가액 기준");
-        set("overviewMomBadge", "전월比 " + OVERVIEW_KPI.mom_pct);
+        set("overviewMomBadge", "전월동기比 " + OVERVIEW_KPI.mom_pct);
         setClass("overviewMomBadge", OVERVIEW_KPI.mom_sign);
 
-        // 전월
+        // 전월 동기
         set("overviewMomVal",      OVERVIEW_KPI.mom_label);
         set("overviewMomSub",      OVERVIEW_KPI.mom_period);
-        set("overviewMomPctBadge", "전체 기준");
+        set("overviewMomPctBadge", "동기 기준");
         setClass("overviewMomPctBadge", "muted");
 
-        // 전년 동월
+        // 전년 동월 동기
         set("overviewYoyVal",   OVERVIEW_KPI.yoy_label);
         set("overviewYoySub",   OVERVIEW_KPI.yoy_period);
-        set("overviewYoyBadge", "YoY " + OVERVIEW_KPI.yoy_pct);
+        set("overviewYoyBadge", "전년동기比 " + OVERVIEW_KPI.yoy_pct);
         setClass("overviewYoyBadge", OVERVIEW_KPI.yoy_sign==="up"?"up":"down");
 
         // Date Progress
